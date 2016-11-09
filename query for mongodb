@@ -1,0 +1,44 @@
+/************************ Db Name *********************/
+use acadglid
+
+/*********Query for places *************************************/
+db.places.insert({placeName:"Aksa Beach",placeDisp:"Aksa Beach is a popular beach and a vacation spot in Aksa village at Malad Mumbai India",distance:"50km",imgUrl:"/image/beach1.jpg",category:"BeachHoliday",value:0})
+db.places.insert({placeName:"Alibag Beach",placeDisp:"Alibag was developed in the 17th century by Sarkhel Kanhoji Aangre the naval chief of King Shivaji's Kingdom.",distance:"150km",imgUrl:"/image/beach2.jpg",category:"BeachHoliday",value:0})
+db.places.insert({placeName:"Colva Beach",placeDisp:"Colva beach stretches for around 2.4 km, part of a beach consisting of about 25 km of powder white sand, lined along its shore by coconut palms, and extending as far as Bogmalo Beach to the north and Cabo de rama Beach to the South Goa's coastline.",distance:"180km",imgUrl:"/image/beach3.jpg",category:"BeachHoliday",value:0})
+
+db.places.insert({placeName:"Nainital",placeDisp:"Based in the Kumaon region of Uttarakhand surrounding the volcanic lake Nani, Nainital is adored by millions and is often referred as the ‘Lake District’ of India.",distance:"120km",imgUrl:"/image/mountains1.jpg",category:"Mountains",value:1})
+db.places.insert({placeName:"Shimla",placeDisp:"Colva beach stretches for around 2.4 km, part of a beach consisting of about 25 km of powder white sand, lined along its shore by coconut palms, and extending as far as Bogmalo Beach to the north and Cabo de rama Beach to the South Goa's coastline.",distance:"180km",imgUrl:"/image/beach3.jpg",category:"Mountains",value:1})
+db.places.insert({placeName:"Shimla",placeDisp:"The once summer capital of the British now the capital of Himachal Pradesh is surely a delight for the eyes.",distance:"180km",imgUrl:"/image/mountains2.jpg",category:"Mountains",value:1)}
+db.places.insert({placeName:"Ooty",placeDisp:"The once summer capital of the British now the capital of Himachal Pradesh is surely a delight for the eyes. ",distance:"180km",imgUrl:"/image/mountains3.jpg",category:"Mountains",value:1)}
+db.places.insert({placeName:"Ooty",placeDisp:"Based in the Kumaon region of Uttarakhand surrounding the volcanic lake Nani, Ooty is adored by millions and is often referred as the ‘Lake District’ of India.",distance:"120km",imgUrl:"/image/mountains3.jpg",category:"Mountains",value:1})
+
+db.places.insert({placeName:"Taj Mahal, Agra",placeDisp:"The Taj Mahal, a beautiful white marble Monument located in the city of Agra on the banks of the holy river Yamuna in the state of Uttar Pradesh.",distance:"170km",imgUrl:"/image/history1.jpg",category:"HistoryTourism",value:2})
+db.places.insert({placeName:"Mysore Palace, Mysore",placeDisp:"The Palace of Mysore is the most famous historical monument, located in the city of Mysore in Karnataka and one of the most visited monuments in India.",distance:"180km",imgUrl:"/image/history2.jpg",category:"HistoryTourism",value:2})
+db.places.insert({placeName:"India gate, Delhi",placeDisp:"The Palace of Mysore is the most famous historical monument, located in the city of Mysore in Karnataka and one of the most visited monuments in India.",distance:"180km",imgUrl:"/image/history3.jpg",category:"HistoryTourism",value:2})
+
+
+db.places.insert({placeName:"Himalaya",placeDisp:"The Hampta Pass trek is another stimulating high altitude one in the Kullu valley. The maximum height achieved during this trek is around 3960 metres.",distance:"270km",imgUrl:"/image/trekking1.jpg",category:"TrekkingSpots",value:3})
+db.places.insert({placeName:"Hampta Pass Trek, Himachal Pradesh",placeDisp:"The Hampta Pass trek is another stimulating high altitude one in the Kullu valley. The maximum height achieved during this trek is around 3960 metres.",distance:"380km",imgUrl:"/image/trekking2.jpg",category:"TrekkingSpots",value:3})
+db.places.insert({placeName:"Chembra Peak Trek, Kerala",placeDisp:"The Hampta Pass trek is another stimulating high altitude one in the Kullu valley. The maximum height achieved during this trek is around 3960 metres.",distance:"380km",imgUrl:"/image/trekking3.jpg",category:"TrekkingSpots",value:3})
+
+
+/******************Query for hopsitals *************************/
+db.hospitals.insert({name:"Hospital1", address:"Delhi"})
+db.hospitals.insert({name:"Hospital2", address:"Delhi"})
+db.hospitals.insert({name:"Hospital3", address:"Mumbai})
+db.hospitals.insert({name:"Hospital4", address:"Mumbai"})
+db.hospitals.insert({name:"Hospital5", address:"Bangalore"})
+db.hospitals.insert({name:"Hospital6", address:"Bangalore"})
+db.hospitals.insert({name:"Hospital7", address:"Hyderabad"})
+db.hospitals.insert({name:"Hospital8", address:"Hyderabad"})
+db.hospitals.insert({name:"Hospital9", address:"Lucknow"})
+db.hospitals.insert({name:"Hospital10", address:"Lucknow"})
+db.hospitals.insert({name:"Hospital11", address:"Sonipat"})
+db.hospitals.insert({name:"Hospital12", address:"Sonipat"})
+
+/*******************Query for categories ************************/
+
+db. categories.insert({name:" BeachHoliday ", value:0})
+db. categories.insert({name:" Mountains ", value:1})
+db. categories.insert({name:" HistoryTourism ", value:2})
+db. categories.insert({name:" TrekkingSpots ", value:3})
