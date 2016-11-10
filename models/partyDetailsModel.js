@@ -3,10 +3,11 @@ var mongoose = require('mongoose'),
     
     
 var partyDetailsModel = new Schema({
-	name:{
-		type:String
-	},
-	value:{type:Number}
+	name:{type:String},
+	value:{type:Number},
+	party:{type:String},
+	percentage:{type:String}
+
     
 	
 });

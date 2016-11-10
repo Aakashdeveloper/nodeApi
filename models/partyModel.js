@@ -3,9 +3,7 @@ var mongoose = require('mongoose'),
     
     
 var partyModel = new Schema({
-	name:{
-		type:String
-	},
+	name:{type:String},
 	value:{type:Number}
     
 	
