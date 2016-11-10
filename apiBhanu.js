@@ -4,17 +4,16 @@ var express = require('express'),
 
 var db = mongoose.connect('mongodb://localhost/acadglid');
 
-var Party        = require('./models/partyModel');
-var partyDetails = require('./models/partyDetailsModel');
-var Place = require('./models/placeModel');
+var Bhanu        = require('./models/bhanuModel');
+
 var app = express();
 
-var port = process.env.PORT||4000; 
+var port = process.env.PORT||8000; 
 var commanRouter = express.Router();
 
-commanRouter.route('/getParty')
+commanRouter.route('/getName')
     .get(function(req,res){
-		Party.find(function(err,data){
+		Bhanu.find(function(err,data){
 			if(err)
 			   res.status(500).send(err);
 			else
@@ -22,20 +21,7 @@ commanRouter.route('/getParty')
 		})
 });
 
-commanRouter.route('/getPartyDetails')
-    .get(function(req,res){
-		    var query = {};
-			if(req.query.value){
-				query.value = req.query.value
-			}
 
-		partyDetails.find(query, function(err,data){
-			if(err)
-			   res.status(500).send(err);
-			else
-				res.json({"List":data});
-		})
-});
 
 app.use('/api', commanRouter);
 
