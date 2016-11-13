@@ -3,10 +3,8 @@ var mongoose = require('mongoose'),
     
     
 var signupMeetModel = new Schema({
-	name:{
-		type:String
-	},
-	emailid:{type:String},
+	name:{type:String },
+	emailid:{type:String, unique: true},
 	password:{type:String}
     
 	
