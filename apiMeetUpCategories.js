@@ -7,7 +7,7 @@ var db = mongoose.connect('mongodb://localhost/acadglid');
 var Categories = require('./models/meetUpCategoriesModel');
 var app = express();
 
-var port = process.env.PORT||4400; 
+var port = process.env.PORT||9001; 
 var commanRouter = express.Router();
 
 commanRouter.route('/getMeetUpCategories')
