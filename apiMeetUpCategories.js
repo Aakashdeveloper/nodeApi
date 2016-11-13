@@ -5,6 +5,7 @@ var express = require('express'),
 var db = mongoose.connect('mongodb://localhost/acadglid');
 
 var Categories = require('./models/meetUpCategoriesModel');
+var Booking = require('./models/putBookingModel');
 var app = express();
 
 var port = process.env.PORT||4400; 
@@ -19,6 +20,14 @@ commanRouter.route('/getMeetUpCategories')
 				res.json({"List":data});
 		})
 });
+
+commanRouter.route('/putBooking')
+    .post(function(req,res){
+    	var enterBooking = new Booking(req.body);
+    	enterBooking.save();
+
+
+   });
 
 app.use('/api', commanRouter);
 
