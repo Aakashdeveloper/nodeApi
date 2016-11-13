@@ -14,16 +14,32 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
-var port = process.env.PORT||7000; 
+var port = process.env.PORT||7500; 
 var commanRouter = express.Router();
 
 commanRouter.route('/signups')
     .post(function(req,res){
     	var signup = new SignUp(req.body);
     	signup.save();
-    	res.status(201).send(signup);
+
 
    });
+
+commanRouter.route('/signin')
+    .get(function(req,res,next){
+    var query ={};
+          var query = {};
+      if(req.query.emailid){
+        query.emailid = req.query.emailid
+      }
+    SignUp.find(query, function(err,data){
+      if(err)
+         res.status(500).send()
+      else
+        res.json({"List":data});
+    })
+
+});
 
 app.use('/api', commanRouter);
 
