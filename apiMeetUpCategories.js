@@ -23,10 +23,10 @@ commanRouter.route('/getMeetUpCategories')
 		})
 });
 
-commanRouter.route('/putBooking')
+commanRouter.route('/booking')
     .post(function(req,res){
-    	var enterBooking = new Booking(req.body);
-    	enterBooking.save();
+    	var booking = new Booking(req.body);
+    	booking.save();
 
 
    });

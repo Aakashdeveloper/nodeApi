@@ -3,10 +3,10 @@ var gulp = require('gulp'),
     
 gulp.task('default', function(){
 	nodemon({
-		script: 'api.js',
+		script: 'apiMeetup.js',
 		ext:'js',
 		env:{
-			PORT:8000
+			PORT:7500
 		},
 		ignore:['./node_modules/**']
 	})

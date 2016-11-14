@@ -1,13 +1,15 @@
 /***************Fecth data using mongodb where its is realted to model***********/
 var express = require('express'),
      mongoose =require('mongoose'),
+     http = require('http');
      bodyParser = require('body-parser');
 
 var db = mongoose.connect('mongodb://localhost/acadglid');
 
 var SignUp   = require('./models/signupMeetModel');
-var partyDetails = require('./models/partyDetailsModel');
-var Place = require('./models/placeModel');
+var Booking = require('./models/bookingModel');
+var Categories = require('./models/meetUpCategoriesModel');
+
 var app = express();
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -25,10 +27,61 @@ commanRouter.route('/signups')
 
    });
 
+commanRouter.route('/booking')
+    .post(function(req,res){
+      var booking = new Booking(req.body);
+      booking.save();
+
+
+   });
+
+commanRouter.route('/getMeetUpCategories')
+    .get(function(req,res){
+    Categories.find(function(err,data){
+      if(err)
+         res.status(500).send(err);
+      else
+        res.json({"List":data});
+    })
+});
+
+commanRouter.route('/userBooked')
+    .get(function(req,res){
+      var query = {};
+      if(req.query.userId){
+        query.userId = req.query.userId
+      }
+     var meetId ;
+     Booking.find(query, function(err,data){
+      if(err)
+         res.status(500).send(err);
+      else
+         meetId = data
+         for (i= 0 ; i<meetId.length; i++){
+             var searchId = (meetId[i].meetingId);
+               http.get(function(req,res){
+                    var query = {};
+                      
+                        query.meetingId = searchId;
+                        Categories.find(query, function(err,datas){
+                            if(err)
+                               res.status(500).send(err);
+                            else
+                              console.log( datas);
+                        })
+                  
+              })
+        }
+
+        
+    })
+});
+
+
+
 commanRouter.route('/signin')
     .get(function(req,res,next){
     var query ={};
-          var query = {};
       if(req.query.emailid){
         query.emailid = req.query.emailid
       }
@@ -40,6 +93,8 @@ commanRouter.route('/signin')
     })
 
 });
+
+
 
 app.use('/api', commanRouter);
 

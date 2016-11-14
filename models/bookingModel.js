@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
     
     
 var putBookingModel = new Schema({
-	bookingId:{type:Number },
+	bookingId:{type:Number},
+	userId:{type:Number},
 	meetingId:{type:Number},
 	dateBooked:{type:String}
     
@@ -11,5 +12,11 @@ var putBookingModel = new Schema({
 });
 
 module.exports = mongoose.model('Booking', putBookingModel, 'booking');
+
+
+
+	
+
+
 	
 
