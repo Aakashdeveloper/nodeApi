@@ -8,7 +8,7 @@ var Bhanu        = require('./models/bhanuModel');
 
 var app = express();
 
-var port = process.env.PORT||8000; 
+var port = process.env.PORT||7600; 
 var commanRouter = express.Router();
 
 commanRouter.route('/getName')

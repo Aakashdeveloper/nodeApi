@@ -3,9 +3,9 @@ var mongoose = require('mongoose'),
     
     
 var putBookingModel = new Schema({
-	name:{type:String },
-	emailid:{type:String, unique: true},
-	password:{type:String}
+	bookingId:{type:Number },
+	meetingId:{type:Number},
+	dateBooked:{type:String}
     
 	
 });

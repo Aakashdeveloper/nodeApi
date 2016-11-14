@@ -8,7 +8,9 @@ var Categories = require('./models/meetUpCategoriesModel');
 var Booking = require('./models/putBookingModel');
 var app = express();
 
+
 var port = process.env.PORT||9001; 
+
 var commanRouter = express.Router();
 
 commanRouter.route('/getMeetUpCategories')
