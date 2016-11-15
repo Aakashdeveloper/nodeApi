@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     
 gulp.task('default', function(){
 	nodemon({
-		script: 'apiMeetup.js',
+		script: 'apiDuplicate.js',
 		ext:'js',
 		env:{
 			PORT:7500
