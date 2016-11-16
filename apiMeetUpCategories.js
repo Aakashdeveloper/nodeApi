@@ -11,6 +11,14 @@ var app = express();
 var port = process.env.PORT||8000; 
 var commanRouter = express.Router();
 
+commanRouter.route('/putBooking')
+    .post(function(req,res){
+    	var booking = new Booking(req.body);
+    	booking.save();
+
+
+   });
+
 commanRouter.route('/getMeetUpCategories')
     .get(function(req,res){
 		Categories.find(function(err,data){
@@ -21,13 +29,7 @@ commanRouter.route('/getMeetUpCategories')
 		})
 });
 
-commanRouter.route('/putBooking')
-    .post(function(req,res){
-    	var enterBooking = new Booking(req.body);
-    	enterBooking.save();
 
-
-   });
 
 app.use('/api', commanRouter);
 
