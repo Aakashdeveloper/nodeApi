@@ -42,3 +42,29 @@ db. categories.insert({name:" BeachHoliday ", value:0})
 db. categories.insert({name:" Mountains ", value:1})
 db. categories.insert({name:" HistoryTourism ", value:2})
 db. categories.insert({name:" TrekkingSpots ", value:3})
+
+
+/**************************Query for  Election parties**************/
+
+db.parties.insert({name:"BJP",value:"0",imgUrl:"/image/party/bjp.jpg"})
+db.parties.insert({name:"Congress",value:"1",imgUrl:"/image/party/congress.jpg"})
+db.parties.insert({name:"APP",value:"2",imgUrl:"/image/party/app.jpg"})
+db.parties.insert({name:"CPI",value:"3",imgUrl:"/image/party/cpi.jpg"})
+db.parties.insert({name:"NCP",value:"4",imgUrl:"/image/party/ncp.jpg"})
+
+
+/**************************Query for  Election parties Details**************/
+ db.partiesDetails.insert({name:"Narendra Modi",party:"BJP",value:"0",percentage:"95",imgUrl: "/image/partyDetails/nm.jpg"})
+ db.partiesDetails.insert({name:"Amit Shah",party:"BJP",value:"0",percentage:"90",imgUrl: "/image/partyDetails/as.jpg"})
+ db.partiesDetails.insert({name:"Rahul Gandhi",party:"CongressCongress",value:"1",percentage:"81",imgUrl: "/image/partyDetails/rg.jpg"})
+ db.partiesDetails.insert({name:"Sonia Gandhi",party:"Congress",value:"1",percentage:"79",imgUrl: "/image/partyDetails/sg.jpg"})
+ db.partiesDetails.insert({name:"Arvind Kejriwal",party:"APP",value:"2",percentage:"83",imgUrl: "/image/partyDetails/ak.jpg"})
+ db.partiesDetails.insert({name:"Manish Sisodia",party:"APP",value:"2",percentage:"80",imgUrl:"/image/partyDetails/ms.jpg"})
+ db.partiesDetails.insert({name:" Abani Mukherji",party:"CPI",value:"3",percentage:"73",imgUrl:"/image/partyDetails/am.jpg"})
+ db.partiesDetails.insert({name:"Sharad Pawar",party:"NCP",value:"4",percentage:"69",imgUrl:/image/partyDetails/sp.jpg"})
+ 
+
+/**************************Query for  meetupcategories**************/
+
+db.meetupcategories.insert({meetUpId:1,name:"Technology", imgUrl:"/image/mucat/technology.jpg", slotBooked:12, slotRemaining:3})
+db.meetupcategories.insert({meetUpId:2,name:"Adventure", imgUrl:"/image/mucat/adventure.jpg", slotBooked:10, slotRemaining:12})

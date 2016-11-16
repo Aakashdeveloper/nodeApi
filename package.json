@@ -9,13 +9,14 @@
   "author": "AakashHanda",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.1.2",
     "async-waterfall": "^0.1.5",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
+    "http": "0.0.0",
     "mongoose": "^4.6.6",
     "mongoose-random": "^0.1.1"
   }
 }
+

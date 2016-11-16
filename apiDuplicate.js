@@ -1,10 +1,14 @@
 /***************Fecth data using mongodb where its is realted to model***********/
 var express = require('express'),
      mongoose =require('mongoose'),
-     waterfall = require('async-waterfall'),
      http = require('http'),
+     waterfall= require('async-waterfall'),
+     async= require('async'),
+     request = require('request'),
+     Futures = require('Futures'),
      bodyParser = require('body-parser');
 
+var sequence = Futures.sequence();
 var db = mongoose.connect('mongodb://localhost/acadglid');
 
 var SignUp   = require('./models/signupMeetModel');
@@ -47,53 +51,139 @@ commanRouter.route('/getMeetUpCategories')
 });
 
 commanRouter.route('/userBooked')
-waterfall([
-  function(callback){
-    http.get(function(req,res){
+    .get(function(req,res){
       var query = {};
       if(req.query.userId){
-      query.userId = req.query.userId
+        query.userId = req.query.userId
       }
      var meetId ;
-     var meetingId
      Booking.find(query, function(err,data){
       if(err)
-       res.status(500).send(null);
+         res.status(500).send(err);
       else
-      meetId = data
-       for (i= 0 ; i<meetId.length; i++){
-         meetingId = (meetId[i].meetingId);
-         console.log(meetId)
-       }
-    });
-    })
-    callback(null, 'meetingId');
-  },
+         meetId = data
+         for (i= 0 ; i<meetId.length; i++){
+             var searchId = (meetId[i].meetingId);
+                        Categories.find({"meetUpId":searchId}, function (err, datas) {
+                          if (err) 
+                              res.status(500).send(err);
 
-  function(meetingId, callback){
+                          //console.log('%s %s is a %s.', datas)
+                          res.json({"List":datas});
+// Space Ghost is a talk show host.
+})
+        
+        }
+    })
+  })
+/*
+commanRouter.route('/userBooked')
+    sequence.then(function(next){
+          http.get(function(req,res){
+            console.log("aaa");
+      var query = {};
+      if(req.query.userId){
+        query.userId = req.query.userId
+      }
+     var meetId ;
+     Booking.find(query, function(err,data){
+      if(err)
+         res.status(500).send(err);
+      else
+         meetId = data
+         for (i= 0 ; i<meetId.length; i++){
+             var searchId = (meetId[i].meetingId);
+         }
+      })
+},next)}).then(function(next){
     http.get(function(req,res){
                     var query = {};
                       
-                        query.meetingId = meetingId;
+                        query.meetingId = searchId;
                         Categories.find(query, function(err,datas){
                             if(err)
-                               res.status(500).send(null);
+                               res.status(500).send(err);
                             else
                               console.log( datas);
                         })
                   
               })
-    callback(null, 'datas');
+ });
+commanRouter.route('/userBooked')
+        .get(function(req,res,callback){
+              var query = {};
+              if(req.query.userId){
+                  query.userId = req.query.userId
+              }
+             var meetId ;
+              Booking.find(query, function(err,data){
+                if(err){
+                   callback(err,null);
+                   return;
+                }
+                  meetId = data
+                   for (i= 0 ; i<meetId.length; i++){
+                     var meetingId = (meetId[i].meetingId);
+                     console.log(meetingId);
+                     callback(meetingId)
+                   }
+              });
+        }).pipe(http.get(function(req,res,meetingId, callback){
+            var query = {};
+                        
+              query.meetingId = meetingId;
+              Categories.find(query, function(err,datas){
+                  if(err)
+                    res.status(500).send(null);
+                 else
+                  callback(null, datas);
+              })
+                    
+      }) ) 
+commanRouter.route('/userBooked')
+ async.waterfall([
+  function(callback){
+        http.get( function(req,res){
+              var query = {};
+              if(req.query.userId){
+                  query.userId = req.query.userId
+              }
+             var meetId ;
+              Booking.find(query, function(err,data){
+                if(err){
+                   callback(err,null);
+                   return;
+                }
+                  meetId = data
+                   for (i= 0 ; i<meetId.length; i++){
+                     var meetingId = (meetId[i].meetingId);
+                     console.log(meetingId);
+                     callback(meetingId)
+                   }
+              });
+        })
+  },
+  function(meetingId, callback){
+       http.get(function(req,res){
+            var query = {};
+                        
+              query.meetingId = meetingId;
+              Categories.find(query, function(err,datas){
+                  if(err)
+                    res.status(500).send(null);
+                 else
+                  callback(null, datas);
+              })
+                    
+      }) 
   }
 ], function (err, result) {
-   if(err)
-       res.status(500).send(err);
-    else
-   console.log(result);
+    if(err){
+      console.log(err);
+      return;
+    }
+      console.log(result)
 });
-
-
-
 commanRouter.route('/signin')
     .get(function(req,res,next){
     var query ={};
@@ -106,9 +196,8 @@ commanRouter.route('/signin')
       else
         res.json({"List":data});
     })
-
 });
-
+*/
 
 
 app.use('/api', commanRouter);

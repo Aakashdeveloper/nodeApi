@@ -8,16 +8,10 @@ var Categories = require('./models/meetUpCategoriesModel');
 var Booking = require('./models/putBookingModel');
 var app = express();
 
-var port = process.env.PORT||8000; 
+
+var port = process.env.PORT||9001; 
+
 var commanRouter = express.Router();
-
-commanRouter.route('/putBooking')
-    .post(function(req,res){
-    	var booking = new Booking(req.body);
-    	booking.save();
-
-
-   });
 
 commanRouter.route('/getMeetUpCategories')
     .get(function(req,res){
@@ -29,7 +23,13 @@ commanRouter.route('/getMeetUpCategories')
 		})
 });
 
+commanRouter.route('/booking')
+    .post(function(req,res){
+    	var booking = new Booking(req.body);
+    	booking.save();
 
+
+   });
 
 app.use('/api', commanRouter);
 

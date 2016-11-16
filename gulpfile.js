@@ -1,12 +1,13 @@
+
 var gulp = require('gulp'),
     nodemon= require('gulp-nodemon');
     
 gulp.task('default', function(){
 	nodemon({
-		script: 'api.js',
+		script: 'apiDuplicate.js',
 		ext:'js',
 		env:{
-			PORT:8000
+			PORT:7500
 		},
 		ignore:['./node_modules/**']
 	})
@@ -14,4 +15,3 @@ gulp.task('default', function(){
 		console.log('restarting');
 	})
 });
-
